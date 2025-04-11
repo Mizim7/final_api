@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}Work log{% endblock %}
+{% block content %}
+    <h2>Works log</h2>
+    <div class="mb-3">
+        <a href="{{ url_for('add_job') }}" class="btn btn-success">Add New Job</a>
+        <a href="{{ url_for('list_departments') }}" class="btn btn-info">View Departments</a>
+    </div>
+    {% for job in jobs %}
+        <h3>Action #{{ loop.index }}</h3>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Title of activity</th>
+                    <th>Team leader</th>
+                    <th>Duration</th>
+                    <th>List of collaborators</th>
+                    <th>Category ID</th>
+                    <th>Is finished</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ job.job_title }}</td>
+                    <td>{{ job.team_leader.name }}</td>
+                    <td>{{ job.work_size }} hours</td>
+                    <td>{{ job.collaborators }}</td>
+                    <td>
+                        {% for category in job.categories %}
+                            {{ category.id }}{% if not loop.last %}, {% endif %}
+                        {% endfor %}
+                    </td>
+                    <td>{{ 'Is finished' if job.is_finished else 'Is not finished' }}</td>
+                </tr>
+            </tbody>
+        </table>
+        {% if current_user.id == job.team_leader_id or current_user.id == 1 %}
+            <div class="mt-2">
+                <a href="{{ url_for('edit_job', job_id=job.id) }}" class="btn btn-warning">Edit Job</a>
+                <form action="{{ url_for('delete_job', job_id=job.id) }}" method="POST" style="display: inline;">
+                    <button type="submit" class="btn btn-danger" onclick="return confirm('Вы уверены, что хотите удалить эту работу?')">Delete Job</button>
+                </form>
+            </div>
+        {% endif %}
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Hometown{% endblock %}
+
+{% block content %}
+<h1>{{ user.name }}</h1>
+<p><strong>Родной город:</strong> {{user.city_from}}</p>
+
+<div id="map" style="width: 800px; height: 600px;"></div>
+
+<script src="https://api-maps.yandex.ru/2.1/?apikey=3baf8166-28d1-41d2-ba0c-7b27830128b2&lang=ru_RU"
+        type="text/javascript"></script>
+<script type="text/javascript">
+    ymaps.ready(function () {
+        var city = "{{ user.city_from }}";
+        var map = new ymaps.Map('map', {
+            center: [55.751574, 37.617635],
+            zoom: 10
+        });
+        ymaps.geocode(city).then(function (res) {
+            var firstGeoObject = res.geoObjects.get(0);
+            if (firstGeoObject) {
+                map.setCenter(firstGeoObject.geometry.getCoordinates(), 10);
+                map.geoObjects.add(firstGeoObject);
+            } else {
+                alert("Город не найден!");
+            }
+        });
+    });
+</script>
+{% endblock %}

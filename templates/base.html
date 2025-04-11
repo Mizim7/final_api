@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Миссия Колонизация Марса{% endblock %}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="icon" href="{{ url_for('static', filename='favicon1.ico') }}">
+    <style>
+        /* Стили для заголовка Works log */
+        h2 {
+            text-align: center;
+        }
+
+        /* Стили для таблицы */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            table-layout: fixed; /* Фиксированная ширина столбцов */
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center; /* Выравнивание текста по центру */
+            border: 1px solid #ddd;
+            word-wrap: break-word; /* Перенос текста, если он не помещается */
+        }
+
+        /* Фиксированная ширина столбцов */
+        th:nth-child(1), td:nth-child(1) { width: 30%; } /* Title of activity */
+        th:nth-child(2), td:nth-child(2) { width: 15%; } /* Team leader */
+        th:nth-child(3), td:nth-child(3) { width: 10%; } /* Duration */
+        th:nth-child(4), td:nth-child(4) { width: 20%; } /* List of collaborators */
+        th:nth-child(5), td:nth-child(5) { width: 15%; } /* Is finished */
+
+        /* Стиль для заголовков */
+        th {
+            background-color: #f2f2f2;
+        }
+
+        /* Альтернативная заливка строк */
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        /* Стиль для столбца "Is finished" */
+        td:last-child {
+            background-color: lightpink;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{{ url_for('index') }}">Миссия Колонизация Марса</a>
+            {% if current_user.is_authenticated %}
+                <span class="navbar-text">Hello, {{ current_user.name }}</span>
+                <a href="{{ url_for('logout') }}" class="btn btn-outline-danger">Logout</a>
+            {% else %}
+                <a href="{{ url_for('login') }}" class="btn btn-primary">Log in</a>
+                <a href="{{ url_for('register') }}" class="btn btn-secondary">Register</a>
+            {% endif %}
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Миссия Колонизация Марса</h1>
+        <p>И на Марсе будут яблони цвести!</p>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

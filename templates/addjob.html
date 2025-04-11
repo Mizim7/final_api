@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}{{ title }}{% endblock %}
+{% block content %}
+    <h2>{{ title }}</h2>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <div class="mb-3">
+            {{ form.job_title.label(class="form-label") }}
+            {{ form.job_title(class="form-control") }}
+        </div>
+        <div class="mb-3">
+            {{ form.team_leader_id.label(class="form-label") }}
+            {{ form.team_leader_id(class="form-select") }}
+        </div>
+        <div class="mb-3">
+            {{ form.work_size.label(class="form-label") }}
+            {{ form.work_size(class="form-control") }}
+        </div>
+        <div class="mb-3">
+            {{ form.collaborators.label(class="form-label") }}
+            {{ form.collaborators(class="form-control") }}
+        </div>
+        <div class="mb-3 form-check">
+            {{ form.is_finished(class="form-check-input") }}
+            {{ form.is_finished.label(class="form-check-label") }}
+        </div>
+        <div class="mb-3">
+            {{ form.category_ids.label(class="form-label") }}
+            {{ form.category_ids(class="form-select", multiple="multiple") }}
+        </div>
+        <button type="submit" class="btn btn-primary">{{ form.submit.label }}</button>
+    </form>
+{% endblock %}
