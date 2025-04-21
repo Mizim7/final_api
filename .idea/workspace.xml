@@ -5,17 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="08296161-632b-4ee6-8a63-0151537f779b" name="Changes" comment="">
-      <change afterPath="D:/Pycharm/pythonProject7/test_api/delete_jobs_test.py" afterDir="false" />
-      <change afterPath="D:/Pycharm/pythonProject7/test_api/edit_jobs_test.py" afterDir="false" />
-      <change afterPath="D:/Pycharm/pythonProject7/test_api/get_jobs_test.py" afterDir="false" />
-      <change afterPath="D:/Pycharm/pythonProject7/test_api/post_jobs_test.py" afterDir="false" />
-      <change afterPath="D:/Pycharm/pythonProject7/test_api/test_api.py" afterDir="false" />
-      <change afterPath="D:/Pycharm/pythonProject7/users_resource.py" afterDir="false" />
+      <change afterPath="D:/Pycharm/pythonProject7/jobs_resource.py" afterDir="false" />
+      <change afterPath="D:/Pycharm/pythonProject7/jobs_test_api.py" afterDir="false" />
+      <change afterPath="D:/Pycharm/pythonProject7/users_test_api.py" afterDir="false" />
       <change beforePath="D:/Pycharm/pythonProject7/.idea/workspace.xml" beforeDir="false" afterPath="D:/Pycharm/pythonProject7/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="D:/Pycharm/pythonProject7/init_db.py" beforeDir="false" afterPath="D:/Pycharm/pythonProject7/init_db.py" afterDir="false" />
       <change beforePath="D:/Pycharm/pythonProject7/instance/database.db" beforeDir="false" afterPath="D:/Pycharm/pythonProject7/instance/database.db" afterDir="false" />
       <change beforePath="D:/Pycharm/pythonProject7/main.py" beforeDir="false" afterPath="D:/Pycharm/pythonProject7/main.py" afterDir="false" />
-      <change beforePath="D:/Pycharm/pythonProject7/seed_db.py" beforeDir="false" />
+      <change beforePath="D:/Pycharm/pythonProject7/models.py" beforeDir="false" afterPath="D:/Pycharm/pythonProject7/models.py" afterDir="false" />
+      <change beforePath="D:/Pycharm/pythonProject7/test_api/delete_jobs_test.py" beforeDir="false" />
+      <change beforePath="D:/Pycharm/pythonProject7/test_api/edit_jobs_test.py" beforeDir="false" />
+      <change beforePath="D:/Pycharm/pythonProject7/test_api/get_jobs_test.py" beforeDir="false" />
+      <change beforePath="D:/Pycharm/pythonProject7/test_api/post_jobs_test.py" beforeDir="false" />
+      <change beforePath="D:/Pycharm/pythonProject7/test_api/test_api.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +49,7 @@
   &quot;keyToString&quot;: {
     &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Python tests.Python tests for jobs_test_api.TestJobsAPI.executor&quot;: &quot;Run&quot;,
     &quot;Python.app.executor&quot;: &quot;Run&quot;,
     &quot;Python.init_db.executor&quot;: &quot;Run&quot;,
     &quot;Python.jobs_api.executor&quot;: &quot;Run&quot;,
@@ -60,29 +62,7 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;
   }
 }</component>
-  <component name="RunManager" selected="Python.main">
-    <configuration name="app" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="pythonProject7" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="D:/Pycharm/pythonProject7" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="D:/Pycharm/pythonProject7/app.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Python tests.Python tests for jobs_test_api.TestJobsAPI">
     <configuration name="init_db" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="pythonProject7" />
       <option name="ENV_FILES" value="" />
@@ -193,13 +173,28 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="Python tests for jobs_test_api.TestJobsAPI" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="pythonProject7" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="D:/Pycharm/pythonProject7/test_api" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;jobs_test_api.TestJobsAPI&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Python.init_db" />
+        <item itemvalue="Python tests.Python tests for jobs_test_api.TestJobsAPI" />
         <item itemvalue="Python.users_api" />
         <item itemvalue="Python.send_request" />
         <item itemvalue="Python.jobs_api" />
-        <item itemvalue="Python.app" />
       </list>
     </recent_temporary>
   </component>

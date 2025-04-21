@@ -30,10 +30,10 @@ job_category = db.Table(
 class Jobs(db.Model):
     __tablename__ = 'jobs'
     id = db.Column(db.Integer, primary_key=True)
-    job_title = db.Column(db.String(100), nullable=False)
+    job_title = db.Column(db.String, nullable=False)
     team_leader_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     work_size = db.Column(db.Integer, nullable=False)
-    collaborators = db.Column(db.String(100), nullable=False)
+    collaborators = db.Column(db.String)
     is_finished = db.Column(db.Boolean, default=False)
 
     categories = db.relationship(

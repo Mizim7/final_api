@@ -8,11 +8,13 @@ from sqlalchemy.orm import Session
 from blueprints.jobs_api import jobs_api_blueprint
 from blueprints.users_api import users_api_blueprint
 from users_resource import UsersListResource, UsersResource
+from jobs_resource import JobsListResource, JobsResource
 from flask_restful import Api
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your_secret_key'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.init_app(app)
 
 login_manager = LoginManager()
@@ -25,6 +27,9 @@ app.register_blueprint(users_api_blueprint)
 api = Api(app)
 api.add_resource(UsersListResource, '/api/v2/users')
 api.add_resource(UsersResource, '/api/v2/users/<int:user_id>')
+
+api.add_resource(JobsListResource, '/api/v2/jobs')
+api.add_resource(JobsResource, '/api/v2/jobs/<int:job_id>')
 
 # @app.route('/favicon1.ico')
 # def favicon():
@@ -50,7 +55,7 @@ def load_user(user_id):
 @app.route('/')
 @login_required
 def index():
-    jobs = Jobs.query.all()
+    jobs = db.session.all()
     return render_template('index.html', jobs=jobs)
 
 
@@ -135,7 +140,7 @@ def add_job():
 @app.route('/editjob/<int:job_id>', methods=['GET', 'POST'])
 @login_required
 def edit_job(job_id):
-    job = Jobs.query.get_or_404(job_id)
+    job = db.session.get_or_404(Jobs, job_id)
     if current_user.id != job.team_leader_id and current_user.id != 1:
         flash('У вас нет прав для редактирования этой работы.', 'danger')
         return redirect(url_for('index'))
@@ -170,7 +175,7 @@ def edit_job(job_id):
 @app.route('/deletejob/<int:job_id>', methods=['POST'])
 @login_required
 def delete_job(job_id):
-    job = Jobs.query.get_or_404(job_id)
+    job = db.session.get_or_404(Jobs, job_id)
     if current_user.id != job.team_leader_id and current_user.id != 1:
         flash('У вас нет прав для удаления этой работы.', 'danger')
         return redirect(url_for('index'))
